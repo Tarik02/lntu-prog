@@ -1,9 +1,9 @@
 /*******************************************************/
 /*                                                     */
-/*  lab_work_04_04                                     */
+/*  lab_work_04_03                                     */
 /*  Language: C                                        */
 /*                                                     */
-/*    Coroutines-functions with pointer values         */
+/*    Coroutines-functions with values-arguments       */
 /*  using C-language constructions.                    */
 /*    Given: a - length of side of equilateral         */
 /*  triangle.                                          */
@@ -12,7 +12,7 @@
 /*  r = a * SQRT3 / 6 - radius of inscribed circle;    */
 /*  R = a * SQRT3 / 3 - radius of escribed circle;     */
 /*    In order to compute values of s, r and R create  */
-/*  coroutines-functions with pointer values.          */
+/*  coroutines-functions with values-arguments.        */
 /*                                                     */
 /*******************************************************/
 
@@ -24,7 +24,9 @@
 #define sqrt3 1.73205f
 
 // Prototypes of the functions:
-void computeCircle(float a, float *Ps, float *Pr, float *PR);
+float square(float a);
+float incircleRadius(float a);
+float excircleRadius(float a);
 
 int main() {
 	// Variables and constants definitions:
@@ -42,7 +44,9 @@ int main() {
 	scanf("%f", &a);
 
 	// Computing the parameters of the triangle:
-	computeCircle(a, &s, &r, &R);
+	s = square(a);
+	r = incircleRadius(a);
+	R = excircleRadius(a);
 
 	printf("\n");
 	printf("  Square of the triangle s = %f\n", s);
@@ -55,9 +59,19 @@ int main() {
 }
 
 //-------------------------------------------------------
-// Function computing parameters of the triangle
-void computeCircle(float a, float *Ps, float *Pr, float *PR) {
-	*Ps = a * a * sqrt3 / 4;
-	*Pr = a * sqrt3 / 6;
-	*PR = a * sqrt3 / 3;
+// Function computing square of the triangle
+float square(float a) {
+	return a * a * sqrt3 / 4;
+}
+
+//-------------------------------------------------------
+// Function computing radius of incircle of the triangle
+float incircleRadius(float a) {
+	return a * sqrt3 / 6;
+}
+
+//-------------------------------------------------------
+// Function computing radius of excircle of the triangle
+float excircleRadius(float a) {
+	return a * sqrt3 / 3;
 }
