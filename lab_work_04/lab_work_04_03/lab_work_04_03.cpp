@@ -1,18 +1,22 @@
 /*******************************************************/
 /*                                                     */
 /*  lab_work_04_03                                     */
-/*  Language: C++                                      */
+/*  Мова: C                                            */
 /*                                                     */
-/*    Coroutines-functions with values-arguments       */
-/*  using C++-language constructions.                  */
-/*    Given: a - length of side of equilateral         */
-/*  triangle.                                          */
-/*    Compute and print:                               */
-/*  s = a * a * SQRT3 / 4 - square of the triangle;    */
-/*  r = a * SQRT3 / 6 - radius of inscribed circle;    */
-/*  R = a * SQRT3 / 3 - radius of escribed circle;     */
-/*    In order to compute values of s, r and R create  */
-/*  coroutines-functions with values-arguments.        */
+/*    Підпрограми-функції з параметрами-значеннями     */
+/*  засобами мови C.                                   */
+/*    Дано: x1 - координата x першої точки;            */
+/*          y1 - координата y першої точки;            */
+/*          x2 - координата x другої точки;            */
+/*          y2 - координата y другої точки;            */
+/*          a - параметр A прямої;                     */
+/*          b - параметр B прямої;                     */
+/*          c - параметр C прямої;                     */
+/*    Обчислити та вивести на друк:                    */
+/*  m1a - відстань від першої точки до прямої;         */
+/*  m2a - відстань від другої точки до прямої;         */
+/*    Для обчислення величин m1a та m2a скласти        */
+/*  підпрограми-функції з параметрами-значеннями.      */
 /*                                                     */
 /*******************************************************/
 
@@ -22,38 +26,50 @@
 #include <windows.h>
 using namespace std;
 
-#define sqrt3 1.73205f
-
-// Prototypes of the functions:
-float square(float a);
-float incircleRadius(float a);
-float excircleRadius(float a);
+// Прототипи підпрограм-функцій:
+float distance(float a, float b, float c, float x, float y);
 
 int main() {
-	// Variables and constants definitions:
-	float a;   // length of the side
-	float s;   // square of the triangle
-	float r;   // radius of incircle
-	float R;   // radius of excircle
+	// Оголошення констант та змінних:
+	float x1;   // координата х першої точки
+	float y1;   // координата y першої точки
+	float x2;   // координата х другої точки
+	float y2;   // координата y другої точки
+	float a;    // параметр A прямої
+	float b;    // параметр B прямої
+	float c;    // параметр C прямої
+	float m1a;  // відстань першої точки до прямої
+	float m2a;  // відстань другої точки до прямої
 
 	clrscr();
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
 	// Reading input:
-	cout << "\n  Input the length of the triangle's side: ";
+	cout << "\n  Введіть вхідні значення:";
+	cout << "\n  x1 = ";
+	cin >> x1;
+	cout << "\n  y1 = ";
+	cin >> y1;
+	cout << "\n  x2 = ";
+	cin >> x2;
+	cout << "\n  y2 = ";
+	cin >> y2;
+	cout << "\n  A = ";
 	cin >> a;
+	cout << "\n  B = ";
+	cin >> b;
+	cout << "\n  C = ";
+	cin >> c;
 
-	// Computing the parameters of the triangle:
-	s = square(a);
-	r = incircleRadius(a);
-	R = excircleRadius(a);
+	// Обчислення значень:
+	m1a = distance(a, b, c, x1, y1);
+	m2a = distance(a, b, c, x2, y2);
 
-	// Writing output:
+	// Виведення значень:
 	cout << "\n";
-	cout << "  Square of the triangle s = " << s << endl;
-	cout << "  Radius of incircle     r = " << r << endl;
-	cout << "  Radius of excircle     R = " << R << endl;
+	cout << "  Відстань від першої точки до прямої: m1a = " << m1a << endl;
+	cout << "  Відстань від другої точки до прямої: m2a = " << m2a << endl;
 
 	getch();
 
@@ -61,19 +77,9 @@ int main() {
 }
 
 //-------------------------------------------------------
-// Function computing square of the triangle
-float square(float a) {
-	return a * a * sqrt3 / 4;
-}
-
-//-------------------------------------------------------
-// Function computing radius of incircle of the triangle
-float incircleRadius(float a) {
-	return a * sqrt3 / 6;
-}
-
-//-------------------------------------------------------
-// Function computing radius of excircle of the triangle
-float excircleRadius(float a) {
-	return a * sqrt3 / 3;
+// Функція для обчислення відстані від прямої до точки
+float distance(float a, float b, float c, float x, float y) {
+	float v1 = abs(a * x + b * y + c);
+	float v2 = sqrt(a * a + b * b);
+	return v1 / v2;
 }
