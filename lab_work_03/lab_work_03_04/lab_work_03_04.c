@@ -32,6 +32,10 @@ int main() {
 	printf("\n  - %s : %x",  "%x ", i);
 	printf("\n  - %s : %X",  "%X ", i);
 
+	float a = 5.0f;
+	printf("%4.2f", a);
+	printf("%d, %d, %d, %d", -1, 2, 3, 4);
+
 	getch();
 
     return 0;
