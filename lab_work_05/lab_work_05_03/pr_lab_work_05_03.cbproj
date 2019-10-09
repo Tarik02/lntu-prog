@@ -1,6 +1,6 @@
 ﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 		<PropertyGroup>
-			<ProjectGuid>{B5BCD309-4855-458A-BE07-712559FAD020}</ProjectGuid>
+			<ProjectGuid>{CD6CB948-36E8-4A19-9097-A99E08A4778A}</ProjectGuid>
 			<ProjectVersion>12.0</ProjectVersion>
 			<Config Condition="'$(Config)'==''">Debug</Config>
 		</PropertyGroup>
@@ -55,7 +55,7 @@
 			<TASM_Debugging>None</TASM_Debugging>
 		</PropertyGroup>
 		<ItemGroup>
-			<CppCompile Include="lab_work_05_03.cpp">
+			<CppCompile Include="lab_work_05_03.c">
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
 			<BuildConfiguration Include="Base">
