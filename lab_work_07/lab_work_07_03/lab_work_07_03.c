@@ -5,7 +5,7 @@
 /*                                                     */
 /*    Табулювання функції на інтервалі засобами мови   */
 /*  C. Обчислити всі значення функції                  */
-/*  y = (pow(cos(a*x), 2) + pow(e, -a*x)) /            */
+/*  y = (pow(cos(a*x), 2) + exp(-a*x)) /            */
 /*    (pi*2 - atan(sqrt(b) + sqrt(x))), аргумент x     */
 /*  якої змінюється на інтервалі [0.6;0.8] з кроком    */
 /*  h=0.02, a=1.3, b=0.75                              */
@@ -22,7 +22,6 @@
 #include <windows.h>
 
 #define pi 3.14159f
-#define e 2.71828f
 
 int main() {
 	float a = 1.3f;
@@ -42,7 +41,7 @@ int main() {
 	printf("\n  Результати табулювання функції:\n");
 
 	for (x = 0.6f; x <= 0.8f; x += 0.02f) {
-		y = (pow(cos(a*x), 2) + pow(e, -a*x)) / (pi*2 - atan(sqrt(b) + sqrt(x)));
+		y = (pow(cos(a*x), 2) + exp(-a*x)) / (pi*2 - atan(sqrt(b) + sqrt(x)));
 		printf("  x=%+4.2f y=%+4.2f\n", x, y);
 
 		if (y < 2.75f) {
