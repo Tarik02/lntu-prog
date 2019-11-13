@@ -2,3 +2,5 @@ __history/
 Debug/
 Release/
 *.local
+
+*.out

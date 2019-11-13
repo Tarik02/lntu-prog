@@ -1,0 +1,21 @@
+{
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "build active file",
+			"command": "/usr/bin/clang++-9",
+			"args": [
+				"-lm",
+				"-std=c++17",
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}.out",
+			],
+			"options": {
+				"cwd": "/usr/bin",
+			},
+		},
+	],
+	"version": "2.0.0",
+}
