@@ -18,16 +18,40 @@ float f(float x) {
 }
 
 int main() {
-	float a, b, c, e, x;
+	float a, b, c, d, e, x;
 	int has_root = 0;
 
-	for (x = -10.0f; x <= 10.0f; x += 1.0f) {
+	printf("Введіть інтервал табуляції: d=");
+	scanf("%f", &d);
+	printf("Введіть точність: e=");
+	scanf("%f", &e);
+
+	for (x = -10.0f; x <= 10.0f; x += d) {
 		printf("f(%.1f) = %.3f\n", x, f(x));
-		if (f(x) * f(x + 1.0f) < 0) {
+		if (f(x) * f(x + d) < 0) {
 			a = x;
-			b = x + 1.0f;
-			printf("Знак змінюється між x=%.1f і x=%.1f\n", a, b);
+			b = x + d;
+			printf("\n");
+			printf("    Знак змінюється між x=%.1f і x=%.1f\n", a, b);
 			has_root = 1;
+
+			printf("    Знаходження розвязку на проміжку [%.1f, %.1f]\n", a, b);
+
+			c = (a + b) / 2;
+
+			do {
+				if (f(c) * f(a) > 0) {
+					a = c;
+				} else {
+					b = c;
+				}
+
+				c = (a + b) / 2;
+			} while (fabsf(f(c)) > e);
+
+			printf("      x  = %.3f\n", c);
+			printf("    f(x) = %.3f\n", f(c));
+			printf("\n");
 		}
 	}
 
@@ -35,25 +59,6 @@ int main() {
 		printf("Рівняння не має коренів на проміжку [-10; 10]\n");
 		return 0;
 	}
-
-	printf("Знаходження розвязку на проміжку [%.1f, %f.1]\n", a, b);
-	printf("Введіть точність: e=");
-	scanf("%f", &e);
-
-	c = (a + b) / 2;
-
-	do {
-		if (f(c) * f(a) > 0) {
-			a = c;
-		} else {
-			b = c;
-		}
-
-		c = (a + b) / 2;
-	} while (fabsf(f(c)) > e);
-
-	printf("  x  = %.3f\n", c);
-	printf("f(x) = %.3f\n", f(c));
 
 	return 0;
 }
