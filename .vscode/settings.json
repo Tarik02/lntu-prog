@@ -4,7 +4,11 @@
 		"**/*.cbproj": true,
 	},
 	"code-runner.executorMap": {
-		"c": "cd $dir && clang-9 -lm -std=c11 $fileName -o $fileNameWithoutExt.out && $dir$fileNameWithoutExt.out",
-		"cpp": "cd $dir && clang++-9 -lm -std=c++17 $fileName -o $fileNameWithoutExt.out && $dir$fileNameWithoutExt.out",
+		"c": "cd $dir && clang -lm -std=c11 $fileName -o $fileNameWithoutExt.out && $dir$fileNameWithoutExt.out",
+		"cpp": "cd $dir && clang++ -lm -std=c++17 $fileName -o $fileNameWithoutExt.out && $dir$fileNameWithoutExt.out",
+	},
+	"files.associations": {
+		"*.peg": "peg-grammar",
+		"iostream": "cpp"
 	},
 }
