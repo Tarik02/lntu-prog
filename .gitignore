@@ -1,6 +1,7 @@
 __history/
 Debug/
 Release/
+.DS_Store
 *.local
 
 *.out
