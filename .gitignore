@@ -5,3 +5,5 @@ Release/
 *.local
 
 *.out
+*.exe
+*.log
