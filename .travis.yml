@@ -1,0 +1,28 @@
+dist: bionic
+
+language: cpp
+
+branches:
+  only:
+  - master
+
+install:
+- pyenv global system 3.8
+- sudo apt-get install -qq mingw-w64
+
+script:
+- CC=i686-w64-mingw32-gcc CPP=i686-w64-mingw32-g++ OUT_SUFFIX=.x86.exe QUIRK=win python3.8 build.py
+- CC=x86_64-w64-mingw32-gcc CPP=x86_64-w64-mingw32-g++ OUT_SUFFIX=.x64.exe QUIRK=win python3.8 build.py
+- OUT_SUFFIX=.linux.out python3.8 build.py
+
+before_deploy:
+- rm -r .quirks .vscode .editorconfig .gitignore .travis.yml build.py
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  target_branch: artifacts
+  verbose: true
+  on:
+    branch: master
