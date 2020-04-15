@@ -7,8 +7,4 @@
 		"c": "cd $dir && clang -lm -std=c11 $fileName -o $fileNameWithoutExt.out && $dir$fileNameWithoutExt.out",
 		"cpp": "cd $dir && clang++ -lm -std=c++17 $fileName -o $fileNameWithoutExt.out && $dir$fileNameWithoutExt.out",
 	},
-	"files.associations": {
-		"*.peg": "peg-grammar",
-		"iostream": "cpp"
-	},
 }
