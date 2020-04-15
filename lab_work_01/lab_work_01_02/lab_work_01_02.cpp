@@ -11,13 +11,14 @@
 /************************************************************/
 
 //Preprocessor directives:
-#include <iostream.h>
-#include <conio.h>
+#include <iostream>
+
+using namespace std;
+
 #define pi 3.14159
 
 int main() {
 	float r, h, sb, sp, v;
-	clrscr();
 
 	//Entering of give radius and height values
 	cout << "\n Enter the value of cylinder base radius!";
@@ -35,7 +36,6 @@ int main() {
 	cout << "\n  Square of cylinder total surface sp=" << sp << endl;
 	cout << "\n  Volume of cylinder lateral v=" << v << endl;
 
-	getch();
 	return 0;
 }
 

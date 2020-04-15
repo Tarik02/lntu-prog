@@ -14,17 +14,11 @@
 /*******************************************************/
 
 #include <stdio.h>
-#include <conio.h>
 #include <math.h>
-#include <windows.h>
 
 int main() {
 	float i;
 	float s;
-
-	clrscr();
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
 
 	i = 1.0f;
 	while (i <= 11.0f) {
@@ -37,8 +31,6 @@ int main() {
 	}
 
 	printf("Результат: %.4f", s);
-
-	getch();
 
 	return 0;
 }

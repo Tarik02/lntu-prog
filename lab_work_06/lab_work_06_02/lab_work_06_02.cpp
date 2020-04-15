@@ -15,19 +15,13 @@
 /*******************************************************/
 
 #include <iostream>
-#include <conio.h>
 #include <math.h>
-#include <windows.h>
 using namespace std;
 
 int main() {
 	float x;  // Аргумент функції
 	float y;  // Значення функції
 	int   v;  // Варіант обчислення функції
-
-	clrscr();
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
 
 	// Ввід значення аргумента:
 	cout << "\n  Введіть значення аргумента: ";
@@ -63,8 +57,6 @@ int main() {
 		cout << "  x=" << fixed << x << "    функція не існує.\n";
 		break;
 	}
-
-	getch();
 
 	return 0;
 }

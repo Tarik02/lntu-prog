@@ -8,6 +8,7 @@
 /*******************************************************/
 
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 int main() {
@@ -26,11 +27,10 @@ int main() {
 		s += a;
 		u = u * (x * x);
 		z *= -1;
-	} while (abs(a) > e);
+	} while (fabs(a) > e);
 
 	cout << "Фінальний результат: " << s << endl;
 	cout << "Точний результат: " << (1 / (1 + x*x)) << endl;
 
 	return 0;
 }
-

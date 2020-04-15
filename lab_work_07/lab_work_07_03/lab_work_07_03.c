@@ -17,9 +17,7 @@
 /*******************************************************/
 
 #include <stdio.h>
-#include <conio.h>
 #include <math.h>
-#include <windows.h>
 
 #define pi 3.14159f
 
@@ -31,10 +29,6 @@ int main() {
 	float y;      // Значення функції
 	int k1 = 0;   // кількість значень y<2.75
 	int k2 = 0;   // кількість значень y>2.75
-
-	clrscr();
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
 
 	// Табулювання функції на заданому інтервалі
 	// з одночасним обчисленням кількісті k та суми s:
@@ -65,8 +59,6 @@ int main() {
 	} else {
 		printf("\n  Значень функції y > 2.75 немає\n");
 	}
-
-	getch();
 
 	return 0;
 }

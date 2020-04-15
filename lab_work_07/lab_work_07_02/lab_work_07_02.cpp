@@ -17,9 +17,7 @@
 
 #include <iostream>
 #include <iomanip>
-#include <conio.h>
 #include <math.h>
-#include <windows.h>
 using namespace std;
 
 int main() {
@@ -28,10 +26,6 @@ int main() {
 	float s = 0;  // Сума значень функції з інтервалу [1;3]
 	float sa;     // Середнє ариметичне значень функції з інтервалу [1;3]
 	int k = 0;    // Кількість значень функції з інтервалу [1;3]
-
-	clrscr();
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
 
 	cout.precision(2);
 
@@ -60,8 +54,6 @@ int main() {
 	} else {
 		cout << "\n  Значень функції на інтервалі [1;3] немає\n";
 	}
-
-	getch();
 
 	return 0;
 }

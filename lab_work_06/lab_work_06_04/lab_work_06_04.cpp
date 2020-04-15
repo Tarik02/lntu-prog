@@ -16,19 +16,13 @@
 /*******************************************************/
 
 #include <iostream>
-#include <conio.h>
 #include <math.h>
-#include <windows.h>
 using namespace std;
 
 int main() {
 	float x;  // Аргумент функції
 	float y;  // Значення функції
 	int   v;  // Варіант обчислення функції
-
-	clrscr();
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
 
 	// Ввід значення аргумента:
 	cout << "\n  Введіть змінну x: ";
@@ -62,8 +56,6 @@ int main() {
 		cout << "  Точка не знаходиться в заштрихованій області.\n";
 		break;
 	}
-
-	getch();
 
 	return 0;
 }

@@ -9,31 +9,23 @@
 /************************************************************/
 
 #include <stdio.h>
-#include <conio.h>
-
-#include <windows.h>
 
 int main() {
-    char symv = 'A';
-    char str[] = "Це стрічка";
-    const char *strPtr = "Це також стрічка";
+	char symv = 'A';
+	char str[] = "Це стрічка";
+	const char *strPtr = "Це також стрічка";
 
-	SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+	printf("  Друк символа 'A' форматом %%c:\n");
+	printf("  %c\n", symv);
 
-    printf("  Друк символа 'A' форматом %%c:\n");
-    printf("  %c\n", symv);
+	printf("  Друк стрічки-константи за форматом %%s:\n");
+	printf("  %s\n", "Це стрічка");
 
-    printf("  Друк стрічки-константи за форматом %%s:\n");
-    printf("  %s\n", "Це стрічка");
+	printf("  Друк стрічки з ім'ям str за форматом %%s:\n");
+	printf("  %s\n", str);
 
-    printf("  Друк стрічки з ім'ям str за форматом %%s:\n");
-    printf("  %s\n", str);
+	printf("  Друк стрічки з допомогою вказівника strPtr за форматом %%s:\n");
+	printf("  %s\n", strPtr);
 
-    printf("  Друк стрічки з допомогою вказівника strPtr за форматом %%s:\n");
-    printf("  %s\n", strPtr);
-
-    getch();
-
-    return 0;
+	return 0;
 }

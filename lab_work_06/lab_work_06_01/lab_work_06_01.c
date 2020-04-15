@@ -15,18 +15,12 @@
 /*******************************************************/
 
 #include <stdio.h>
-#include <conio.h>
 #include <math.h>
-#include <windows.h>
 
 int main() {
 	float x;  // Аргумент функції
 	float y;  // Значення функції
 	int   v;  // Варіант обчислення функції
-
-	clrscr();
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
 
 	// Ввід значення аргумента:
 	printf("\n  Введіть значення аргумента: ");
@@ -61,8 +55,6 @@ int main() {
 		printf("  x=%4.2f    функція не існує.\n", x);
 		break;
 	}
-
-	getch();
 
 	return 0;
 }

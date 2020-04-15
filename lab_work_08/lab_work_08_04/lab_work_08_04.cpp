@@ -15,18 +15,12 @@
 
 #include <iostream>
 #include <iomanip>
-#include <conio.h>
 #include <math.h>
-#include <windows.h>
 using namespace std;
 
 int main() {
 	float i;
 	float s;
-
-	clrscr();
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
 
 	i = 1.0f;
 	while (i <= 11.0f) {
@@ -40,8 +34,6 @@ int main() {
 
 	cout.precision(4);
 	cout << "Результат: " << s << endl;
-
-	getch();
 
 	return 0;
 }

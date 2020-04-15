@@ -15,19 +15,13 @@
 /*******************************************************/
 
 #include <stdio.h>
-#include <conio.h>
 #include <math.h>
-#include <windows.h>
 
 #define pi 3.14159f
 
 int main() {
 	float x;  // Аргумент функції
 	float y;  // Значення функції
-
-	clrscr();
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
 
 	// Ввід значення аргумента:
 	printf("\n  Введіть значення аргумента: ");
@@ -46,8 +40,6 @@ int main() {
 	} else {
 		printf("  x=%4.2f    функція не існує.\n", x);
 	}
-
-	getch();
 
 	return 0;
 }

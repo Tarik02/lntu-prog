@@ -22,8 +22,6 @@
 
 #include <iostream>
 #include <math.h>
-#include <conio.h>
-#include <windows.h>
 using namespace std;
 
 // Прототипи підпрограм-функцій:
@@ -40,10 +38,6 @@ int main() {
 	float c;    // параметр C прямої
 	float m1a;  // відстань першої точки до прямої
 	float m2a;  // відстань другої точки до прямої
-
-	clrscr();
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
 
 	// Reading input:
 	cout << "\n  Введіть вхідні значення:";
@@ -70,8 +64,6 @@ int main() {
 	cout << "\n";
 	cout << "  Відстань від першої точки до прямої: m1a = " << m1a << endl;
 	cout << "  Відстань від другої точки до прямої: m2a = " << m2a << endl;
-
-	getch();
 
 	return 0;
 }

@@ -17,8 +17,6 @@
 /*******************************************************/
 
 #include <stdio.h>
-#include <conio.h>
-#include <windows.h>
 
 #define pi 3.14159f
 
@@ -35,10 +33,6 @@ int main() {
 	float sp;  // площа повної поверхні циліндра
 	float v;   // об'єм циліндра
 
-	clrscr();
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-
 	// Ввід заданих величин радіуса та висоти:
 	printf("\n  Введіть радіус основи циліндра: ");
 	scanf("%f", &r);
@@ -52,8 +46,6 @@ int main() {
 		PovPoverchnja(r, h));
 	printf("  Об'єм циліндра                  v=%f\n",
 		Objem(r, h));
-
-	getch();
 
 	return 0;
 }

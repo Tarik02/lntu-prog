@@ -16,18 +16,12 @@
 /*******************************************************/
 
 #include <stdio.h>
-#include <conio.h>
 #include <math.h>
-#include <windows.h>
 
 int main() {
 	float x;  // Аргумент функції
 	float y;  // Значення функції
 	int   v;  // Варіант обчислення функції
-
-	clrscr();
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
 
 	// Ввід значення аргумента:
 	printf("\n  Введіть змінну x: ");
@@ -60,8 +54,6 @@ int main() {
 		printf("  Точка не знаходиться в заштрихованій області.\n");
 		break;
 	}
-
-	getch();
 
 	return 0;
 }

@@ -12,12 +12,10 @@
 //Preprocessor directives:
 
 #include <stdio.h>
-#include <conio.h>
 #define pi 3.14159
 
 int main() {
 	float r, h, sb, sp, v;
-	clrscr();
 
 	//Entering of give radius and height values
 	printf("\n Enter the value of cylinder base radius!");
@@ -34,7 +32,6 @@ int main() {
 	printf("\n  Square of cylinder lateral surface sb=%f", sb);
 	printf("\n  Square of cylinder total surface sp=%f", sp);
 	printf("\n  Volume of cylinder lateral v=%f", v);
-	getch();
 
 	return 0;
 }

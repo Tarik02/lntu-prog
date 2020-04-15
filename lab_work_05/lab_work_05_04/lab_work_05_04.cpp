@@ -16,9 +16,7 @@
 /*******************************************************/
 
 #include <iostream>
-#include <conio.h>
 #include <math.h>
-#include <windows.h>
 using namespace std;
 
 int main() {
@@ -26,10 +24,6 @@ int main() {
 	float b;  // Параметр b
 	float x;  // Аргумент функції
 	float y;  // Значення функції
-
-	clrscr();
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
 
 	// Ввід значення аргумента:
 	cout << "\n  Введіть значення параметра a: ";
@@ -50,13 +44,10 @@ int main() {
 		y = pow(cos(a + pow(x*x, 1.0f/3)), 2);
 	} else {
 		cout << "  x=" << fixed << x << "    функція не існує.\n";
-		getch();
 		return 0;
 	}
 
 	cout << "  x=" << fixed << x << "    y=" << fixed << y << "\n";
-
-	getch();
 
 	return 0;
 }

@@ -9,28 +9,25 @@
 /************************************************************/
 
 #include <stdio.h>
-#include <conio.h>
 
 #define SQRT3 1.73205f
 
 int main() {
 	float a, S, r, R;
-	clrscr();
 
 	// Entering input data:
 	printf("Enter the length of side of the triangle: ");
 	scanf("%f", &a);
 
 	// Calculating the results:
-    S = a * a * SQRT3 / 4;
-    r = a * SQRT3 / 6;
-    R = a * SQRT3 / 3;
+	S = a * a * SQRT3 / 4;
+	r = a * SQRT3 / 6;
+	R = a * SQRT3 / 3;
 
 	// Printing the results:
 	printf("S = %f\n", S);
 	printf("r = %f\n", r);
 	printf("R = %f\n", R);
 
-	getch();
 	return 0;
 }
