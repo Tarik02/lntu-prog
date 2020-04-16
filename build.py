@@ -9,8 +9,8 @@ from asyncio import subprocess
 
 CC = getenv('CC', 'gcc')
 CPP = getenv('CPP', 'g++')
-CFLAGS = getenv('CFLAGS', '-std=c99 -static -lm')
-CPPFLAGS = getenv('CPPFLAGS', '-std=c++11 -static -lm')
+CFLAGS = getenv('CFLAGS', '-std=c99 -static')
+CPPFLAGS = getenv('CPPFLAGS', '-std=c++11 -static')
 OUT_SUFFIX = getenv('OUT_SUFFIX', '.out')
 QUIRK = getenv('QUIRK', '')
 
@@ -79,7 +79,8 @@ async def task_fn(task_id):
 				*flags,
 				*sources,
 				'-o',
-				out_file
+				out_file,
+				'-lm',
 			]
 
 			command = ' '.join(str(i) for i in command)

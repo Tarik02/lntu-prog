@@ -76,7 +76,7 @@ void print_data() {
 
 	cout << endl;
 
-	cout << "Мiнiмальний елемент масиву: " << el_min.val << endl;
+	cout << "Мінімальний елемент масиву: " << el_min.val << endl;
 	cout << "  Номер стрiчки: " << el_min.i << endl;
 	cout << "  Номер стовбця: " << el_min.j << endl;
 	cout << "Максимальний елемент масиву: " << el_max.val << endl;
