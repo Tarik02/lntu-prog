@@ -21,7 +21,7 @@ script:
 - cd .artifacts
 - zip -r ../.releases/win.x86.zip $(find . -type f \( -name '*.c' -o -name '*.cpp' -o -name '*.x86.exe' \))
 - zip -r ../.releases/win.x64.zip $(find . -type f \( -name '*.c' -o -name '*.cpp' -o -name '*.x64.exe' \))
-- zip -r ../.releases/linux.x64.zip $(find . -type f \( -name '*.c' -o -name '*.cpp' -o -name '*.linux.x64.exe' \))
+- zip -r ../.releases/linux.x64.zip $(find . -type f \( -name '*.c' -o -name '*.cpp' -o -name '*.linux.x64.out' \))
 - cd ..
 
 deploy:
