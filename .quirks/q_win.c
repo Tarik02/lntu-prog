@@ -1,7 +1,7 @@
 #include "q_win.h"
 
 #include <conio.h>
-#include <Windows.h>
+#include <windows.h>
 
 #undef main
 
