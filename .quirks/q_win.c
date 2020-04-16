@@ -1,7 +1,7 @@
 #include "q_win.h"
 
 #include <conio.h>
-#include <windows.h>
+#include <Windows.h>
 
 #undef main
 
@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
 
 	int result = real_main(argc, argv);
 
-	getch();
+	system("pause");
 
 	return result;
 }

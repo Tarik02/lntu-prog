@@ -70,6 +70,10 @@ async def task_fn(task_id):
 				flags.append(f'-include')
 				flags.append(f'.quirks/q_{QUIRK}.h')
 
+				if QUIRK == 'win':
+					flags.append('-finput-charset=utf8')
+					flags.append('-fexec-charset=windows-1251')
+
 			command = [
 				compiler,
 				*flags,
