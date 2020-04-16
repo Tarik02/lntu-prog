@@ -9,8 +9,8 @@ from asyncio import subprocess
 
 CC = getenv('CC', 'gcc')
 CPP = getenv('CPP', 'g++')
-CFLAGS = getenv('CFLAGS', '-std=c99 -static')
-CPPFLAGS = getenv('CPPFLAGS', '-std=c++17 -static')
+CFLAGS = getenv('CFLAGS', '-std=c99 -static -lm')
+CPPFLAGS = getenv('CPPFLAGS', '-std=c++17 -static -lm')
 OUT_SUFFIX = getenv('OUT_SUFFIX', '.out')
 QUIRK = getenv('QUIRK', '')
 
