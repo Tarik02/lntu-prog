@@ -16,13 +16,19 @@ script:
 - OUT_SUFFIX=.linux.out python3.8 build.py
 
 before_deploy:
-- rm -r .quirks .vscode .editorconfig .gitignore .travis.yml build.py
+- rm -rf .quirks .vscode .editorconfig .gitignore .travis.yml build.py
 
 deploy:
-  provider: pages
+- provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   target_branch: artifacts
-  verbose: true
+  on:
+    branch: master
+- provider: releases
+  skip_cleanup: true
+  api_key: $GITHUB_TOKEN
+  file_glob: true
+  file: '**/*'
   on:
     branch: master
