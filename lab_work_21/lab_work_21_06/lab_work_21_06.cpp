@@ -19,7 +19,7 @@ using namespace std;
 
 int main() {
 	char c;
-	char s[20]; // Задана стрiчка з 20 символiв
+	char s[100]; // Задана стрiчка з 100 символiв
 	int i = 0, len;
 
 	cout << "Введiть стрiчку з 20 (або менше) символiв:" << endl << "  ";
