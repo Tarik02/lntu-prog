@@ -13,20 +13,31 @@ install:
 script:
 - CC=i686-w64-mingw32-gcc CPP=i686-w64-mingw32-g++ OUT_SUFFIX=.x86.exe QUIRK=win python3.8 build.py
 - CC=x86_64-w64-mingw32-gcc CPP=x86_64-w64-mingw32-g++ OUT_SUFFIX=.x64.exe QUIRK=win python3.8 build.py
-- OUT_SUFFIX=.linux.out python3.8 build.py
+- OUT_SUFFIX=.linux.x64.out python3.8 build.py
 
-before_deploy:
-- rm -rf .quirks .vscode .editorconfig .gitignore .travis.yml build.py
+- rm -r .quirks .vscode .editorconfig .gitignore .travis.yml build.py
+- mkdir .artifacts .releases
+- mv * .artifacts/
+- cd .artifacts
+- zip -r ../.releases/win.x86.zip **/.c **/.cpp **/*.x86.exe
+- zip -r ../.releases/win.x64.zip **/.c **/.cpp **/*.x64.exe
+- zip -r ../.releases/linux.x64.zip **/.c **/.cpp **/*.linux.x64.out
+- cd ..
 
 deploy:
 - provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
+  local_dir: .artifacts
   target_branch: artifacts
   on:
     branch: master
 - provider: releases
   skip_cleanup: true
   api_key: $GITHUB_TOKEN
+  file:
+  - '.releases/win.x86.zip'
+  - '.releases/win.x64.zip'
+  - '.releases/linux.x64.zip'
   on:
     branch: master
