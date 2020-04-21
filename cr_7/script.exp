@@ -1,0 +1,51 @@
+#!/usr/bin/expect
+
+spawn ./cr_7.out; sleep 0.1
+
+expect ">"
+
+send "add\n"; sleep 0.1
+send "Черемош\n"; sleep 0.1
+send "1\n"; sleep 0.1
+send "1\n"; sleep 0.1
+send "3\n"; sleep 0.1
+send "Іван Сергійович\n"; sleep 0.1
+send "Моршин\n"; sleep 0.1
+
+expect ">"
+
+send "add\n"; sleep 0.1
+send "Нива\n"; sleep 0.1
+send "1\n"; sleep 0.1
+send "1\n"; sleep 0.1
+send "2\n"; sleep 0.1
+send "Микола Миколайович\n"; sleep 0.1
+send "Трускавець\n"; sleep 0.1
+
+expect ">"
+
+send "add\n"; sleep 0.1
+send "Черемош\n"; sleep 0.1
+send "1\n"; sleep 0.1
+send "1\n"; sleep 0.1
+send "Кирило Мифодійович\n"; sleep 0.1
+send "Трускавець\n"; sleep 0.1
+
+expect ">"
+
+send "add\n"; sleep 0.1
+send "Черемош\n"; sleep 0.1
+send "1\n"; sleep 0.1
+send "2\n"; sleep 0.1
+send "1\n"; sleep 0.1
+send "Юрій Михайлович\n"; sleep 0.1
+send "Трускавець\n"; sleep 0.1
+
+expect ">"
+
+send "summary\n"; sleep 0.1
+send "\n"; sleep 0.1
+
+expect ">"
+
+interact
