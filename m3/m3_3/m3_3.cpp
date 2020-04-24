@@ -10,6 +10,8 @@
 
 #include <iostream>
 #include <cmath>
+#include <cstring>
+#include <cstdlib>
 
 using namespace std;
 
