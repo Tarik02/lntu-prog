@@ -1,0 +1,48 @@
+#!/usr/bin/expect
+
+spawn ./lab_work_24_01.out
+
+expect ">"; send "0\n"
+
+expect ">"; send "1\n"
+expect ">"; send "Петренко\n"
+expect ">"; send "56.54\n"
+
+expect ">"; send "2\n"
+expect ">"; send "Власюк\n"
+expect ">"; send "77.21\n"
+
+expect ">"; send "3\n"
+expect ">"; send "Славський\n"
+expect ">"; send "89.65\n"
+
+expect ">"; send \x04
+
+expect eof
+
+
+spawn ./lab_work_24_01.out
+
+expect ">"; send "1\n"
+
+expect eof
+
+
+spawn ./lab_work_24_01.out
+
+expect ">"; send "2\n"
+
+expect ">"; send "4\n"
+expect ">"; send "Бринський\n"
+expect ">"; send "44.25\n"
+
+expect ">"; send \x04
+
+expect eof
+
+
+spawn ./lab_work_24_01.out
+
+expect ">"; send "1\n"
+
+expect eof
