@@ -1,20 +1,22 @@
-/**********************************************************/
-/*                                                        */
-/*  cr_7                                                  */
-/*  Мова: C++                                             */
-/*                                                        */
-/*  Створити масив структур, що містить задані у варіанті */
-/* поля. Протестувати програму за трьома різними наборами */
-/* даних.                                                 */
-/* 1. № п/п.                                              */
-/* 2. Назва санаторію (Нива, Черемош, Лаванда).           */
-/* 3. Номер (одномісний, двомісний, тримісний).           */
-/* 4. Місто (Моршин, Трускавець).                         */
-/* 5. Корпус (1-5).                                       */
-/* 6. Прізвище пацієнта.                                  */
-/*  Визначити наявність одномісних номерів в Черемоші.    */
-/*                                                        */
-/**********************************************************/
+/************************************************************/
+/*                                                          */
+/*  cr_8                                                    */
+/*  Мова: C++                                               */
+/*                                                          */
+/*  Створити клас для обробки масиву структур, створеного   */
+/* у попередньому завданні. Передбачити, що цей клас        */
+/* виконуватиме функції введення та виведення масиву        */
+/* структур, а також їх обробку.                            */
+/*  Протестувати програму за трьома різними наборами даних. */
+/*  Структура:                                              */
+/* 1. № п/п.                                                */
+/* 2. Назва санаторію (Нива, Черемош, Лаванда).             */
+/* 3. Номер (одномісний, двомісний, тримісний).             */
+/* 4. Місто (Моршин, Трускавець).                           */
+/* 5. Корпус (1-5).                                         */
+/* 6. Прізвище пацієнта.                                    */
+/*                                                          */
+/************************************************************/
 
 #include <iostream>
 #include <iomanip>
@@ -43,31 +45,53 @@ struct patient_t_comp {
 	}
 };
 
-map<string, function<void()>> commands;         // доступні команди
-set<patient_t *, patient_t_comp> patients;      // список пацієнтів
+class App {
+public:
+	map<string, function<void()>> commands;         // доступні команди
+	set<patient_t *, patient_t_comp> patients;      // список пацієнтів
 
-patient_t input_patient(); // функція для зчитування пацієнта
-void cmd_help();           // функція для виводу списку команд
-void cmd_add();            // функція для додавання нового пацієнта
-void cmd_summary();        // функція для виводу висновку
-void init_commands();      // функція для ініціалізації команд
-void read_commands();      // функція для послідовного зчитування команд
-void cleanup();            // функція для очищення пам'яті
+public:
+	App(); //  конструктор
+	~App(); // деструктор
+
+	patient_t input_patient(); // функція для зчитування пацієнта
+
+	void cmd_help();           // функція для виводу списку команд
+	void cmd_add();            // функція для додавання нового пацієнта
+	void cmd_summary();        // функція для виводу висновку
+	void read_commands();      // функція для послідовного зчитування команд
+};
 
 int main() {
-	init_commands();
+	App app;
 
-	cmd_help();
+	app.cmd_help();
 
-	read_commands();
-
-	cleanup();
+	app.read_commands();
 
 	return 0;
 }
 
+// конструктор
+App::App() {
+	commands["h"] = bind(&App::cmd_help, this);
+	commands["help"] = bind(&App::cmd_help, this);
+	commands["a"] = bind(&App::cmd_add, this);
+	commands["add"] = bind(&App::cmd_add, this);
+	commands["s"] = bind(&App::cmd_summary, this);
+	commands["summary"] = bind(&App::cmd_summary, this);
+}
+
+// деструктор
+App::~App() {
+	for (const patient_t *it : patients) {
+		delete it;
+	}
+	patients.clear();
+}
+
 // функція для зчитування пацієнта
-patient_t input_patient() {
+patient_t App::input_patient() {
 	patient_t result;
 
 	do {
@@ -122,7 +146,7 @@ patient_t input_patient() {
 }
 
 // функція для виводу списку команд
-void cmd_help() {
+void App::cmd_help() {
 	cout << R"(Доступні команди:
 h, help     список команд
 a, add      додати пацієнта
@@ -132,13 +156,13 @@ s, summary  зробити запит на отримання даних
 }
 
 // функція для додавання нового пацієнта
-void cmd_add() {
+void App::cmd_add() {
 	patient_t *patient = new patient_t(input_patient());
 	patients.insert(patient);
 }
 
 // функція для виводу висновку
-void cmd_summary() {
+void App::cmd_summary() {
 	string sanatory;
 	int section = -1, room = -1;
 
@@ -189,18 +213,8 @@ void cmd_summary() {
 	}
 }
 
-// функція для ініціалізації команд
-void init_commands() {
-	commands["h"] = cmd_help;
-	commands["help"] = cmd_help;
-	commands["a"] = cmd_add;
-	commands["add"] = cmd_add;
-	commands["s"] = cmd_summary;
-	commands["summary"] = cmd_summary;
-}
-
 // функція для послідовного зчитування команд
-void read_commands() {
+void App::read_commands() {
 	while (true) {
 		string cmd;
 		
@@ -219,12 +233,4 @@ void read_commands() {
 
 		it->second();
 	}
-}
-
-// функція для очищення пам'яті
-void cleanup() {
-	for (const patient_t *it : patients) {
-		delete it;
-	}
-	patients.clear();
 }
