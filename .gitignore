@@ -4,6 +4,12 @@ Release/
 .DS_Store
 *.local
 
+.artifacts
+.artifacts_win
+.releases
+
+/win
+
 *.out
 *.exe
 *.log

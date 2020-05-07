@@ -11,17 +11,22 @@ install:
 - sudo apt-get install -qq mingw-w64
 
 script:
-- CC=i686-w64-mingw32-gcc CPP=i686-w64-mingw32-g++ OUT_SUFFIX=.x86.exe QUIRK=win python3.8 build.py
-- CC=x86_64-w64-mingw32-gcc CPP=x86_64-w64-mingw32-g++ OUT_SUFFIX=.x64.exe QUIRK=win python3.8 build.py
-- OUT_SUFFIX=.linux.x64.out python3.8 build.py
-
-- rm -r .quirks .vscode .editorconfig .gitignore .travis.yml build.py
+- python3.8 patch.py
+- mv win .artifacts_win
 - mkdir .artifacts .releases
-- mv * .artifacts/
+
+- find . -maxdepth 1 -not -path '*/\.*' -not -path '.' -type d -exec mv '{}' .artifacts \;
 - cd .artifacts
-- zip -r ../.releases/win.x86.zip $(find . -type f \( -name '*.c' -o -name '*.cpp' -o -name '*.x86.exe' \))
-- zip -r ../.releases/win.x64.zip $(find . -type f \( -name '*.c' -o -name '*.cpp' -o -name '*.x64.exe' \))
+- OUT_SUFFIX=.linux.x64.out python3.8 ../build.py
 - zip -r ../.releases/linux.x64.zip $(find . -type f \( -name '*.c' -o -name '*.cpp' -o -name '*.linux.x64.out' \))
+- cd ..
+
+- cd .artifacts_win
+- CC=i686-w64-mingw32-gcc CPP=i686-w64-mingw32-g++ OUT_SUFFIX=.x86.exe python3.8 ../build.py
+- CC=x86_64-w64-mingw32-gcc CPP=x86_64-w64-mingw32-g++ OUT_SUFFIX=.x64.exe python3.8 ../build.py
+- zip -r ../.releases/win.x86.zip $(find . -type f \( -name '*.cbproj' -o -name '*.c' -o -name '*.cpp' -o -name '*.x86.exe' \))
+- zip -r ../.releases/win.x64.zip $(find . -type f \( -name '*.cbproj' -o -name '*.c' -o -name '*.cpp' -o -name '*.x64.exe' \))
+- find . -type f \( -name '*.exe' \) -exec rsync -R "{}" ../.artifacts \;
 - cd ..
 
 deploy:

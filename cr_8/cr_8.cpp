@@ -25,7 +25,6 @@
 #include <map>
 #include <string>
 #include <algorithm>
-#include <functional>
 
 using namespace std;
 
@@ -41,13 +40,30 @@ struct patient_t {
 
 struct patient_t_comp {
 	bool operator()(const patient_t *a, const patient_t *b) const {
-		return make_tuple(a->sanatory, a->section, a->number, a->name, a->city) < make_tuple(b->sanatory, b->section, b->number, b->name, b->city);
+		if (a->sanatory < b->sanatory) {
+			return true;
+		} else if (a->sanatory == b->sanatory) {
+			if (a->section < b->section) {
+				return true;
+			} else if (a->section == b->section) {
+				if (a->number < b->number) {
+					return true;
+				} else if (a->number == b->number) {
+					if (a->name < b->name) {
+						return true;
+					} else if (a->name == b->name) {
+						return a->city < b->city;
+					}
+				}
+			}
+		}
+		return false;
 	}
 };
 
 class App {
 public:
-	map<string, function<void()>> commands;         // доступні команди
+	map<string, void(App::*)()> commands;           // доступні команди
 	set<patient_t *, patient_t_comp> patients;      // список пацієнтів
 
 public:
@@ -74,18 +90,18 @@ int main() {
 
 // конструктор
 App::App() {
-	commands["h"] = bind(&App::cmd_help, this);
-	commands["help"] = bind(&App::cmd_help, this);
-	commands["a"] = bind(&App::cmd_add, this);
-	commands["add"] = bind(&App::cmd_add, this);
-	commands["s"] = bind(&App::cmd_summary, this);
-	commands["summary"] = bind(&App::cmd_summary, this);
+	commands["h"] = &App::cmd_help;
+	commands["help"] = &App::cmd_help;
+	commands["a"] = &App::cmd_add;
+	commands["add"] = &App::cmd_add;
+	commands["s"] = &App::cmd_summary;
+	commands["summary"] = &App::cmd_summary;
 }
 
 // деструктор
 App::~App() {
-	for (const patient_t *it : patients) {
-		delete it;
+	for (set<patient_t *, patient_t_comp>::iterator it = patients.begin(); it != patients.end(); ++it) {
+		delete *it;
 	}
 	patients.clear();
 }
@@ -106,7 +122,8 @@ patient_t App::input_patient() {
 
 		result.places = 0;
 		int used = 0;
-		for (const patient_t *other : patients) {
+		for (set<patient_t *, patient_t_comp>::iterator it = patients.begin(); it != patients.end(); ++it) {
+			const patient_t *other = *it;
 			if (
 				result.sanatory == other->sanatory &&
 				result.section == other->section &&
@@ -147,12 +164,11 @@ patient_t App::input_patient() {
 
 // функція для виводу списку команд
 void App::cmd_help() {
-	cout << R"(Доступні команди:
-h, help     список команд
-a, add      додати пацієнта
-s, summary  зробити запит на отримання даних
-   exit     завершити роботу програми
-)";
+	cout << "Доступні команди:" << endl;
+	cout << "h, help     список команд" << endl;
+	cout << "a, add      додати пацієнта" << endl;
+	cout << "s, summary  зробити запит на отримання даних" << endl;
+	cout << "   exit     завершити роботу програми" << endl;
 }
 
 // функція для додавання нового пацієнта
@@ -185,18 +201,19 @@ void App::cmd_summary() {
 
 	map<int, int> free;
 
-	const patient_t *prev = nullptr;
-	for (const patient_t *p : patients) {
+	const patient_t *prev = NULL;
+	for (set<patient_t *, patient_t_comp>::iterator it = patients.begin(); it != patients.end(); ++it) {
+		const patient_t *p = *it;
 		if (!sanatory.empty() && p->sanatory != sanatory) continue;
 		if (section != -1 && p->section != section) continue;
 		if (room != -1 && p->number != room) continue;
 
 		bool ch = false;
-		if (ch || (ch = prev == nullptr || prev->sanatory != p->sanatory))
+		if (ch || (ch = prev == NULL || prev->sanatory != p->sanatory))
 			cout << "  Санаторій " << p->sanatory << ":" << endl;
-		if (ch || (ch = prev == nullptr || prev->section != p->section))
+		if (ch || (ch = prev == NULL || prev->section != p->section))
 			cout << "    Корпус " << p->section << ":" << endl;
-		if (ch || (ch = prev == nullptr || prev->number != p->number)) {
+		if (ch || (ch = prev == NULL || prev->number != p->number)) {
 			cout << "      Кімната " << p->number << " (" << p->places << " місць):" << endl;
 			free[p->places] += p->places;
 		}
@@ -208,8 +225,8 @@ void App::cmd_summary() {
 	}
 
 	cout << "З них, вільні місця:" << endl;
-	for (const pair<int, int> &it : free) {
-		cout << "  у " << it.first << "-місних кімнатах: " << it.second << endl;
+	for (map<int, int>::iterator it = free.begin(); it != free.end(); ++it) {
+		cout << "  у " << it->first << "-місних кімнатах: " << it->second << endl;
 	}
 }
 
@@ -225,12 +242,12 @@ void App::read_commands() {
 			break;
 		}
 
-		map<string, function<void()>>::const_iterator it = commands.find(cmd);
+		map<string, void(App::*)()>::const_iterator it = commands.find(cmd);
 		if (it == commands.end()) {
 			cout << "Невідома команда. Введіть help щоб отримати список доступних команд." << endl;
 			continue;
 		}
 
-		it->second();
+		(this->*it->second)();
 	}
 }
