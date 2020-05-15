@@ -1,0 +1,27 @@
+#!/usr/bin/expect
+
+spawn ./z_9.out; sleep 0.1
+
+send "5\n"; sleep 0.1
+
+send "Фомін Т.М.\n"; sleep 0.1
+send "Школа №3\n"; sleep 0.1
+send "11А\n"; sleep 0.1
+
+send "Кирилюк М.Л.\n"; sleep 0.1
+send "Школа №3\n"; sleep 0.1
+send "11Б\n"; sleep 0.1
+
+send "Грицюк П.А.\n"; sleep 0.1
+send "Школа №4\n"; sleep 0.1
+send "10А\n"; sleep 0.1
+
+send "Денисюк А.С.\n"; sleep 0.1
+send "Школа №3\n"; sleep 0.1
+send "10А\n"; sleep 0.1
+
+send "Миронюк Л.М.\n"; sleep 0.1
+send "Школа №2\n"; sleep 0.1
+send "10А\n"; sleep 0.1
+
+interact
