@@ -1,0 +1,18 @@
+STDERR:
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_25/lab_work_25_03/lab_work_25_03.cpp: In function ‘int main()’:
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_25/lab_work_25_03/lab_work_25_03.cpp:107:30: warning: ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]
+  Faculty d1("ФКНIT", 10, 2);
+                              ^
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_25/lab_work_25_03/lab_work_25_03.cpp:122:26: warning: ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]
+  Faculty d2("ФБ", k, kv);
+                          ^
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_25/lab_work_25_03/lab_work_25_03.cpp:137:28: warning: ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]
+  Faculty d3("ФОФ", k, kv);
+                            ^
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_25/lab_work_25_03/lab_work_25_03.cpp:150:24: warning: ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]
+  Faculty d4("МБФ", k);
+                        ^
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_25/lab_work_25_03/lab_work_25_03.cpp:196:32: warning: ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]
+  Faculty d6("ФЕПЕС", k, kv);
+                                ^
+

@@ -1,0 +1,24 @@
+STDERR:
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_23/lab_work_23_03/lab_work_23_03.c: In function ‘main’:
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_23/lab_work_23_03/lab_work_23_03.c:40:78: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+   "Кількість пам'яті пiд структуру longint_parts: %d байтiв.\n",
+                                                                             ~^
+                                                                             %ld
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_23/lab_work_23_03/lab_work_23_03.c:45:78: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+   "Кількість пам'яті пiд об'єднання number_parts: %d байтiв.\n",
+                                                                             ~^
+                                                                             %ld
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_23/lab_work_23_03/lab_work_23_03.c:51:9: warning: '0' flag ignored with precision and ‘%x’ gnu_printf format [-Wformat=]
+  printf("Довге цiле - %#0.10lx\n", un.number);
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_23/lab_work_23_03/lab_work_23_03.c:51:38: warning: format ‘%lx’ expects argument of type ‘long unsigned int’, but argument 2 has type ‘int32_t {aka int}’ [-Wformat=]
+  printf("Довге цiле - %#0.10lx\n", un.number);
+                               ~~~~~~~^     ~~~~~~~~~
+                               %#0.10x
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_23/lab_work_23_03/lab_work_23_03.c:52:9: warning: '0' flag ignored with precision and ‘%x’ gnu_printf format [-Wformat=]
+  printf("Молодше слово - %#0.6x\n", un.lip.low);
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_23/lab_work_23_03/lab_work_23_03.c:53:9: warning: '0' flag ignored with precision and ‘%x’ gnu_printf format [-Wformat=]
+  printf("Старше слово - %#0.6x\n", un.lip.high);
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+

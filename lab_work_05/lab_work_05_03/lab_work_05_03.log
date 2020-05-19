@@ -1,0 +1,6 @@
+STDERR:
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_05/lab_work_05_03/lab_work_05_03.c: In function ‘main’:
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_05/lab_work_05_03/lab_work_05_03.c:37:34: warning: implicit declaration of function ‘abs’ [-Wimplicit-function-declaration]
+   y = pow((x*x + a*b*a*b + 1) / (abs(a*x) + 1), 1.0f/5);
+                                  ^~~
+

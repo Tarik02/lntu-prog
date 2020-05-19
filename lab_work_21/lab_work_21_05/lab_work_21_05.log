@@ -1,0 +1,21 @@
+STDERR:
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_21/lab_work_21_05/lab_work_21_05.cpp: In function ‘int main()’:
+/home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_21/lab_work_21_05/lab_work_21_05.cpp:32:8: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+  gets(s);
+        ^
+In file included from /usr/include/c++/7/cstdio:42:0,
+                 from /usr/include/c++/7/ext/string_conversions.h:43,
+                 from /usr/include/c++/7/bits/basic_string.h:6361,
+                 from /usr/include/c++/7/string:52,
+                 from /usr/include/c++/7/bits/locale_classes.h:40,
+                 from /usr/include/c++/7/bits/ios_base.h:41,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from /home/travis/build/Tarik02/lntu-prog/.artifacts/lab_work_21/lab_work_21_05/lab_work_21_05.cpp:14:
+/usr/include/stdio.h:577:14: note: declared here
+ extern char *gets (char *__s) __wur __attribute_deprecated__;
+              ^~~~
+/tmp/ccgysJVE.o: In function `main':
+lab_work_21_05.cpp:(.text+0x56): warning: the `gets' function is dangerous and should not be used.
+
