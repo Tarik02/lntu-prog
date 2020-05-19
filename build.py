@@ -60,6 +60,10 @@ async def task_fn(task_id):
 			if compiler is None:
 				continue
 
+			if (directory / '.skip').exists():
+				print(f'Skipped "{source}"')
+				continue
+
 			sources = [
 				source,
 			]

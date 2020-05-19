@@ -11,19 +11,21 @@ install:
 - sudo apt-get install -qq mingw-w64
 
 script:
-- python3.8 patch.py
-- mv win .artifacts_win
-- mkdir .artifacts .releases
-
+- mkdir .releases .artifacts
 - find . -maxdepth 1 -not -path '*/\.*' -not -path '.' -type d -exec mv '{}' .artifacts \;
+- TARGET=artifacts python3.8 patch.py
+- TARGET=win python3.8 patch.py
+
 - cd .artifacts
 - OUT_SUFFIX=.linux.x64.out python3.8 ../build.py
+- rm -rf **/*.skip
 - zip -r ../.releases/linux.x64.zip $(find . -type f \( -name '*.c' -o -name '*.cpp' -o -name '*.linux.x64.out' \))
 - cd ..
 
-- cd .artifacts_win
+- cd .win
 - CC=i686-w64-mingw32-gcc CPP=i686-w64-mingw32-g++ OUT_SUFFIX=.x86.exe python3.8 ../build.py
 - CC=x86_64-w64-mingw32-gcc CPP=x86_64-w64-mingw32-g++ OUT_SUFFIX=.x64.exe python3.8 ../build.py
+- rm -rf **/*.skip
 - zip -r ../.releases/win.x86.zip $(find . -type f \( -name '*.cbproj' -o -name '*.c' -o -name '*.cpp' -o -name '*.x86.exe' \))
 - zip -r ../.releases/win.x64.zip $(find . -type f \( -name '*.cbproj' -o -name '*.c' -o -name '*.cpp' -o -name '*.x64.exe' \))
 - find . -type f \( -name '*.exe' \) -exec rsync -R "{}" ../.artifacts \;
