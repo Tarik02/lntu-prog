@@ -11,7 +11,7 @@ install:
 - sudo apt-get install -qq mingw-w64
 
 script:
-- mkdir .releases .artifacts
+- mkdir .releases .artifacts .win
 - find . -maxdepth 1 -not -path '*/\.*' -not -path '.' -type d -exec mv '{}' .artifacts \;
 - TARGET=artifacts python3.8 patch.py
 - TARGET=win python3.8 patch.py
